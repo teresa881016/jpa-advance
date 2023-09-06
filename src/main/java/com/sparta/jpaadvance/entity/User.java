@@ -17,11 +17,6 @@ public class User {
     private Long id;
     private String name;
 
-    @ManyToMany(mappedBy = "userList")
-    private List<Food> foodList = new ArrayList<>();
-
-    public void addFoodList(Food food) {
-        this.foodList.add(food);
-        food.getUserList().add(this); // 외래 키(연관 관계) 설정
-    }
+    @OneToMany(mappedBy = "user") // 고객 한명 to 음식을 여러번 주문할 수 있다.
+    private List<Order> orderList = new ArrayList<>();
 }
