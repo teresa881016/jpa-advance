@@ -17,8 +17,14 @@ public class User {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "user") // 외래키 주인 user
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})//test 2 할 때 씀 cascade = CascadeType.PERSIST) // 외래키 주인 user
     private List<Food> foodList = new ArrayList<>();
+
+    public void addFoodList(Food food) {
+        this.foodList.add(food);
+        food.setUser(this);//외래키 설정
+
+    }
 
 //    @OneToMany(mappedBy = "user") // 고객 한명 to 음식을 여러번 주문할 수 있다.
 //    private List<Order> orderList = new ArrayList<>();
