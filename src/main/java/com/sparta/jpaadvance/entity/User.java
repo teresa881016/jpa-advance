@@ -17,7 +17,7 @@ public class User {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})//test 2 할 때 씀 cascade = CascadeType.PERSIST) // 외래키 주인 user
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true) // orphanRemoval는 CascadeType.REMOVE 기능을 가지고 있다.
     private List<Food> foodList = new ArrayList<>();
 
     public void addFoodList(Food food) {
