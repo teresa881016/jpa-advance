@@ -17,6 +17,9 @@ public class User {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "user") // 고객 한명 to 음식을 여러번 주문할 수 있다.
-    private List<Order> orderList = new ArrayList<>();
+    @OneToMany(mappedBy = "user") // 외래키 주인 user
+    private List<Food> foodList = new ArrayList<>();
+
+//    @OneToMany(mappedBy = "user") // 고객 한명 to 음식을 여러번 주문할 수 있다.
+//    private List<Order> orderList = new ArrayList<>();
 }

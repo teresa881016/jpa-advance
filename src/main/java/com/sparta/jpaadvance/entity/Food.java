@@ -18,6 +18,12 @@ public class Food {
     private String name;
     private double price;
 
-    @OneToMany(mappedBy = "food") // 하나의 음식 to 주문이 여러번 들어올 수 있다.
-    private List<Order> orderList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+
+//    @OneToMany(mappedBy = "food") // 하나의 음식 to 주문이 여러번 들어올 수 있다.
+//    private List<Order> orderList = new ArrayList<>();
 }
